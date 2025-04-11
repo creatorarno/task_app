@@ -1,35 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/features/auth/pages/login_page.dart';
+import 'package:frontend/features/auth/pages/signup_page.dart';
 
-class SignupPage extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   static route() => MaterialPageRoute(
-        builder: (context) => const SignupPage(),
+        builder: (context) => const LoginPage(),
       );
-  const SignupPage({super.key});
+
+  const LoginPage({super.key});
 
   @override
-  State<SignupPage> createState() => _SignupPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
-  final nameController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
-    confirmPasswordController.dispose();
-    nameController.dispose();
     formKey.currentState!.validate();
     super.dispose();
   }
 
 // User sign up logic goes here
-  void signUpUser() {
+  void loginUser() {
     if (formKey.currentState!.validate()) {
       // store the user data
     }
@@ -46,7 +43,7 @@ class _SignupPageState extends State<SignupPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "Sign Up.",
+                "Sign In.",
                 style: TextStyle(
                   fontSize: 50,
                   fontWeight: FontWeight.bold,
@@ -54,24 +51,6 @@ class _SignupPageState extends State<SignupPage> {
               ),
 
               const SizedBox(height: 30),
-
-              // Name TextField
-              TextFormField(
-                controller: nameController,
-                decoration: InputDecoration(
-                  labelText: "Name",
-                ),
-                // Check if the name is empty
-                // If empty, return error message
-                validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return "Please enter your name";
-                  }
-                  return null;
-                },
-              ),
-
-              const SizedBox(height: 15),
 
               // Email TextField
               TextFormField(
@@ -118,31 +97,11 @@ class _SignupPageState extends State<SignupPage> {
 
               const SizedBox(height: 15),
 
-              // Confirm Password TextField
-              TextFormField(
-                controller: confirmPasswordController,
-                decoration: InputDecoration(
-                  labelText: "Confirm Password",
-                ),
-                obscureText: true,
-                validator: (value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return "Please enter confirm password";
-                  }
-                  if (value?.trim() != passwordController.text.trim()) {
-                    return "Passwords do not match";
-                  }
-                  return null;
-                },
-              ),
-
-              const SizedBox(height: 20),
-
               // Button to Sign Up
               ElevatedButton(
-                onPressed: signUpUser,
+                onPressed: loginUser,
                 child: Text(
-                  "SIGN UP",
+                  "SIGN IN",
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -157,15 +116,15 @@ class _SignupPageState extends State<SignupPage> {
               // Already have an account? Sign In
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).push(LoginPage.route());
+                  Navigator.of(context).push(SignupPage.route());
                 },
                 child: RichText(
                   text: TextSpan(
-                    text: "Already have an account?",
+                    text: "Don't have an account?",
                     style: Theme.of(context).textTheme.titleMedium,
                     children: [
                       TextSpan(
-                        text: " Sign In",
+                        text: " Sign Up",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                         ),

@@ -18,6 +18,20 @@ class AppTheme {
           width: 3.0,
         ),
       ),
+      border: OutlineInputBorder(
+        borderSide: BorderSide(
+          color: Colors.grey.shade300,
+          width: 3.0,
+        ),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(10),
+        borderSide: const BorderSide(
+          color: Colors.red,
+          width: 3.0,
+        ),
+      ),
     ),
     // Add more theme configurations here
 

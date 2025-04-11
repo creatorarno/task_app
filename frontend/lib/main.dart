@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/core/theme/app_theme.dart';
+import 'package:frontend/features/auth/pages/login_page.dart';
 import 'package:frontend/features/auth/pages/signup_page.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Task App',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const SignupPage(),
+      home: const LoginPage(),
     );
   }
 }
